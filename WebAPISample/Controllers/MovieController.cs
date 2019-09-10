@@ -34,10 +34,13 @@ namespace WebAPISample.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Movie value)
         {
             Movie movieToEdit = db.Movies.FirstOrDefault(m => m.MovieId == id);
-            movieToEdit.Title = value;
+            movieToEdit.Title = value.Title;
+            movieToEdit.Director = value.Director;
+            movieToEdit.Genre = value.Genre;
+
         }
 
         // DELETE api/values/5 
