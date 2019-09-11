@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201909101833009_init.Designer.cs">
       <DependentUpon>201909101833009_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909111311114_seeding.cs" />
+    <Compile Include="Migrations\201909111311114_seeding.Designer.cs">
+      <DependentUpon>201909111311114_seeding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -347,6 +351,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909101833009_init.resx">
       <DependentUpon>201909101833009_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909111311114_seeding.resx">
+      <DependentUpon>201909111311114_seeding.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

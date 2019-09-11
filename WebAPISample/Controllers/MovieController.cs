@@ -13,34 +13,34 @@ namespace WebAPISample.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET api/values
-        public IEnumerable<Movie> Get()
+        public IHttpActionResult Get()
         {
-            var movies = db.Movies.ToList();
+            var movies = db.Movies.ToArray();
 
-            return movies;
+            return Ok(movies);
         }
 
         // GET api/values/5
-        public Movie Get(int id)
+        public IHttpActionResult Get(int id)
         {
             Movie movie = db.Movies.FirstOrDefault(m => m.MovieId == id);
-            return movie;
+            return Ok(movie);
         }
 
         // POST api/values
-        public void Post([FromBody]Movie value)
+        public IHttpActionResult Post([FromBody]Movie value)
         {
-            db.Movies.Add(value);
+            return Ok(db.Movies.Add(value));
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]Movie value)
+        public IHttpActionResult Put(int id, [FromBody]Movie value)
         {
             Movie movieToEdit = db.Movies.FirstOrDefault(m => m.MovieId == id);
             movieToEdit.Title = value.Title;
             movieToEdit.Director = value.Director;
             movieToEdit.Genre = value.Genre;
-
+            return Ok(movieToEdit);
         }
 
         // DELETE api/values/5 
