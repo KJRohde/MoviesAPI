@@ -1,9 +1,9 @@
 (function($){
     function processForm( e ){
         var dict = {
-        	Title : this["title"].value,
-        	Director: this["director"].value
-            Genre: this["genre"].value
+            Title : this["Title"].value,
+            Director: this["Director"].value,
+            Genre: this["Genre"].value
         };
 
         $.ajax({
@@ -23,42 +23,30 @@
         e.preventDefault();
     }
 
+    $('#my-form').submit( processForm );
+})(jQuery);
 
-$("tr:has(td)").remove();
 
-$.each(Movie, function (index, Movie) {
-
-    var td_title = $("<td/>");
-
-    // 2.3 get each category of this article
-    $.each(Movie.Title, function (i, Title) {
-        var span = $("<span/>");
-        span.text(title);
-        td_title.append(span);
+$(document).ready(function makeTable(){
+$.ajax({
+    url: 'https://localhost:44352/api/Movie',
+    dataType: 'json',
+    type: 'get',
+    data: JSON,
+    async: true,
+    success: function (data, textStatus, jQxhr){
+        $.each(data, function (index, movie) {
+            console.log(movie);
+        $("#movies_table").append(
+            "<tr><td>"
+            + movie.Title
+            + "</td>" +"<td>" + movie.Genre
+            + "</td>" + "<td>" + movie.Director
+            + "</td></tr>")
     });
-
-    var td_genre = $("<td/>");
-
-    // 2.3 get each category of this article
-    $.each(Movie.Genre, function (i, Genre) {
-        var span = $("<span/>");
-        span.text(Genre);
-        td_genre.append(span);
-    });    var td_genre = $("<td/>");
-
-    var td_director = $("<td/>");
-
-    // 2.3 get each category of this article
-    $.each(Movie.Director, function (i, Director) {
-        var span = $("<span/>");
-        span.text(Director);
-        td_director.append(span);
+    },
+    error: function (request, message, error) {
+      handleException(request, message, error);
+    }
     });
-
-    // 2.6 Create a new row and append 3 columns (title+url, categories, tags)
-    $("#movies").append($('<tr/>')
-            .append(td_title)
-            .append(td_director)
-            .append(td_tags)
-    ); 
-}); 
+});

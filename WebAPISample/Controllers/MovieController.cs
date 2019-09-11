@@ -28,9 +28,10 @@ namespace WebAPISample.Controllers
         }
 
         // POST api/values
-        public IHttpActionResult Post([FromBody]Movie value)
+        public void Post([FromBody]Movie value)
         {
-            return Ok(db.Movies.Add(value));
+            db.Movies.Add(value);
+            db.SaveChanges();
         }
 
         // PUT api/values/5
@@ -40,6 +41,7 @@ namespace WebAPISample.Controllers
             movieToEdit.Title = value.Title;
             movieToEdit.Director = value.Director;
             movieToEdit.Genre = value.Genre;
+            db.SaveChanges();
             return Ok(movieToEdit);
         }
 
