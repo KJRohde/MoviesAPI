@@ -1,6 +1,9 @@
-document.ready(makeTable())
+$(document).ready(function()
+{
+    makeTable();
+})
 
-(function($){
+
     function processForm( e ){
         var dict = {
             Title : this["Title"].value,
@@ -10,13 +13,14 @@ document.ready(makeTable())
 
         $.ajax({
             url: 'https://localhost:44352/api/Movie',
-            async: false,
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify(dict),
             success: function( data, textStatus, jQxhr ){
                 $('#response pre').html( data );
+                $("#movies_table tbody tr").remove();
+                makeTable();
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
@@ -27,7 +31,7 @@ document.ready(makeTable())
     }
 
     $('#my-form').submit( processForm );
-})(jQuery);
+    (jQuery);
 
 
 function makeTable(){
@@ -101,6 +105,8 @@ function editDetails(id, movie){
             contentType: 'application/json',
             data: JSON.stringify(dict),
             success: function( data, textStatus, jQxhr ){
+                $("#movies_table tbody tr").remove();
+                makeTable();
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
