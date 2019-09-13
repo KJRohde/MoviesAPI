@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "758eb29b-a881-48b4-b5b4-556d3538dc88",
+		"name": "Movies API",
+		"description": "Requests made to Movies API for API project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44352/api/Movie",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44352",
+					"path": [
+						"api",
+						"Movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie Id 3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44352/api/Movie/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44352",
+					"path": [
+						"api",
+						"Movie",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Movie Id 3 to Genre Thriller",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"Genre\": \"Thriller\",\r\n        \"Title\": \"Inception\",\r\n        \"Director\": \"Christopher Nolan\"\r\n    }"
+				},
+				"url": {
+					"raw": "https://localhost:44352/api/Movie/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44352",
+					"path": [
+						"api",
+						"Movie",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post New Movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"Genre\": \"Fantasy\",\r\n        \"Title\": \"The Hobbit\",\r\n        \"Director\": \"Peter Jackson\"\r\n    }"
+				},
+				"url": {
+					"raw": "https://localhost:44352/api/Movie",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44352",
+					"path": [
+						"api",
+						"Movie"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

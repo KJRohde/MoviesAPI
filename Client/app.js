@@ -21,6 +21,7 @@ $(document).ready(function()
                 $('#response pre').html( data );
                 $("#movies_table tbody tr").remove();
                 makeTable();
+                
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
